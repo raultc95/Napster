@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<HBox prefHeight="109.0" prefWidth="358.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.AddGenre">
+   <children>
+      <ComboBox fx:id="idGenre" prefHeight="25.0" prefWidth="96.0" promptText="ID" />
+      <TextField fx:id="genre" prefHeight="25.0" prefWidth="176.0" />
+      <Button fx:id="add" mnemonicParsing="false" onAction="#addGenre" text="AÑADIR">
+         <HBox.margin>
+            <Insets left="5.0" />
+         </HBox.margin>
+      </Button>
+   </children>
+   <padding>
+      <Insets left="5.0" top="50.0" />
+   </padding>
+</HBox>

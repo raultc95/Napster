@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="397.0" prefWidth="713.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.Administrator">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="SALIR">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Close" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <GridPane prefHeight="372.0" prefWidth="186.0" BorderPane.alignment="CENTER">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="AÑADIR">
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></Label>
+                  <Button fx:id="addArtist" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addArtist" text="ARTISTA">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="addSingle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addSingle" text="CANCION">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="addAlbum" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addAlbum" text="ALBUM">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="addGenre" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#addGenre" text="GENERO">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+               </children></VBox>
+            <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+               <children>
+                  <Label alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="ACTUALIZAR" />
+                   <Button fx:id="updateArtist" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateArtist" text="ARTISTA">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                  <Button fx:id="updateSingle" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateSingle" text="CANCION">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin>
+                  </Button>
+                   <Button fx:id="updateAlbum" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateAlbum" text="ALBUM">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+                   <Button fx:id="updateGenre" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#updateGenre" text="GENERO">
+                     <VBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </VBox.margin></Button>
+               </children>
+            </VBox>
+         </children>
+      </GridPane>
+   </left>
+   <center>
+      <TableView fx:id="tableSong" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="listSong" prefWidth="343.0" text="CANCIONES" />
+            <TableColumn fx:id="listArtist" prefWidth="258.0" text="ARTISTA" />
+        </columns>
+      </TableView>
+   </center>
+</BorderPane>

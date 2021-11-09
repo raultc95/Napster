@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="301.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.AddSong">
+   <children>
+      <ComboBox fx:id="idSong" prefWidth="150.0" promptText="ID" />
+      <Label text="TITULO" />
+      <TextField fx:id="tittle">
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" />
+         </VBox.margin>
+      </TextField>
+      <ComboBox fx:id="listGenre" prefWidth="150.0" promptText="GENERO">
+         <VBox.margin>
+            <Insets top="2.0" />
+         </VBox.margin></ComboBox>
+      <Label text="DURACION" />
+      <TextField fx:id="duration">
+         <VBox.margin>
+            <Insets left="5.0" right="5.0" />
+         </VBox.margin>
+      </TextField>
+      <ComboBox fx:id="listaAlbum" prefWidth="150.0" promptText="ALBUM">
+         <VBox.margin>
+            <Insets top="2.0" />
+         </VBox.margin></ComboBox>
+      <Button fx:id="add" mnemonicParsing="false" onAction="#addSong" text="AÑADIR">
+         <VBox.margin>
+            <Insets top="10.0" />
+         </VBox.margin>
+      </Button>
+      <Button fx:id="delete" mnemonicParsing="false" text="BORRAR" />
+   </children>
+</VBox>

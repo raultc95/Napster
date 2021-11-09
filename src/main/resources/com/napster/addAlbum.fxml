@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="177.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.AddAlbum">
+   <children>
+      <ComboBox fx:id="idAlbum" prefWidth="150.0" promptText="ID">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin></ComboBox>
+      <Label text="NOMBRE" />
+      <TextField fx:id="tittle" />
+       <Label text="FECHA DE PUBLICACION" />
+       <TextField fx:id="date" />
+      <Button mnemonicParsing="false" text="FOTO" />
+      <TextField fx:id="url" promptText="URL IMAGEN">
+         <VBox.margin>
+            <Insets right="5.0" />
+         </VBox.margin>
+      </TextField>
+      <ComboBox fx:id="listArtist" prefWidth="150.0" promptText="ARTISTA">
+         <padding>
+            <Insets top="2.0" />
+         </padding></ComboBox>
+      <Button fx:id="add" mnemonicParsing="false" onAction="#addAlbum" text="AÑADIR" />
+      <Button fx:id="delete" mnemonicParsing="false" text="BORRAR" />
+   </children>
+</VBox>

@@ -94,26 +94,45 @@ public class AddSong {
     }
 
     public void addSong() {
-        Connection conn;
-        conn = Conection.getConexion();
-        if (conn != null) {
-            song.setNombre(tittle.getText());
-            song.setGenre(listGenre.getSelectionModel().getSelectedItem());
-            song.setDuracion(Integer.parseInt(duration.getText()));
-            song.setAlbum(listaAlbum.getSelectionModel().getSelectedItem());
-
-            //listaAlbum.getItems().toString();
+        if (add.getText().equals("AÑADIR")) {
+            Connection conn;
+            conn = Conection.getConexion();
+            if (conn != null) {
+                song.setNombre(tittle.getText());
+                song.setGenre(listGenre.getSelectionModel().getSelectedItem());
+                song.setDuracion(Integer.parseInt(duration.getText()));
+                song.setAlbum(listaAlbum.getSelectionModel().getSelectedItem());
+            } //listaAlbum.getItems().toString();
             try {
                 song.insertar(new MariaDBSong());
                 Dialog.showInformation("Cancion Añadida", "La cancion ha sido añadido sin problemas", "Puede continuar");
             } catch (SQLException e) {
                 Dialog.showError("ERROR", "ERROR", "ERROR");
             }
-        } else {
-            Dialog.showError("Error de Conexion", "No hay conexion a Internet", "Verifique la conexion");
+
+        } else if (add.getText().equals("ACTUALIZAR")) {
+            updateSong();
 
         }
+    }
 
-
+    public void updateSong() {
+        Connection conn;
+        conn = Conection.getConexion();
+        if (conn != null) {
+            song.setId(idSong.getSelectionModel().getSelectedItem().getId());
+            song.setNombre(tittle.getText());
+            song.setGenre(listGenre.getSelectionModel().getSelectedItem());
+            song.setDuracion(Integer.parseInt(duration.getText()));
+            song.setAlbum(listaAlbum.getSelectionModel().getSelectedItem());
+            MariaDBSong s = new MariaDBSong();
+            s.actualizar(song);
+        }
     }
 }
+
+
+
+
+
+

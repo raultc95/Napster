@@ -10,20 +10,7 @@ public class Song {
 
 
 
-    public Album getAlbum() {
-        return album;
-    }
 
-    public void setAlbum(Album album) {
-        this.album = album;
-    }
-    public Genre getGenre(){
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
 
     public Song() {
     }
@@ -85,6 +72,20 @@ public class Song {
     public void setNreproducciones(int nreproducciones) {
         this.nreproducciones = nreproducciones;
     }
+    public Album getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(Album album) {
+        this.album = album;
+    }
+    public Genre getGenre(){
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
 
     @Override
     public String toString() {
@@ -98,4 +99,6 @@ public class Song {
     public String toCombobox(){
         return this.nombre +"."+this.id;
     }
+
+
 }

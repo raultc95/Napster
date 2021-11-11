@@ -10,7 +10,7 @@ import java.util.List;
 
 public class MariaDBAlbum extends Album implements AlbumDAO {
     final String INSERT ="INSERT INTO discos(nombre, fecha_publicacion,foto,id_artista) VALUES(?,?,?,?)";
-    final String UPDATE ="UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artistas=? WHERE id =?";
+    final String UPDATE ="UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artista=? WHERE id =?";
     final String DELETE ="DELETE FROM artistas WHERE id=?";
     final static String GETALL ="SELECT id,nombre FROM discos";
     final String GETONE ="SELECT nombre, nacionalidad FROM generos WHERE id=?";

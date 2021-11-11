@@ -88,6 +88,7 @@ public class AddArtist {
                 artist.setNacionalidad(nationality.getText());
                 try{
                     artist.insertar(new MariaDBArtist());
+
                     Dialog.showInformation("Artista Añadido","El artista ha sido añadido sin problemas","Puede continuar");
 
                 } catch (SQLException e){
@@ -117,6 +118,25 @@ public class AddArtist {
 
 
     }
+    public void deleteArtist(){
+        Connection conn;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            artist.setId(idArtist.getSelectionModel().getSelectedItem().getId());
+            try{
+                artist.eliminar(artist);
+                idArtist.setConverter(Utils.artistConverter());
+                idArtist.getItems().setAll(MariaDBArtist.listarTodos());
+
+                Dialog.showInformation("ARTISTA ELIMINADO","El artista ha sido eliminado sin problemas","Puede continuar");
+
+            } catch (SQLException e){
+                Dialog.showError("ERROR","ERROR","ERROR");
+            }
+
+        }
+    }
+
     public static void changeWindow(window w){
         actual_window=w;
     }

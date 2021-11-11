@@ -81,7 +81,7 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
     }
 
     @Override
-    public void eliminar(Artist a) {
+    public void eliminar(Artist a)throws SQLException {
         Connection conn = null;
         conn = Conection.getConexion();
         if(conn!=null){
@@ -90,7 +90,6 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
                 q = conn.prepareStatement(DELETE);
                 q.setInt(1,a.getId());
                 q.execute();
-                conn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }

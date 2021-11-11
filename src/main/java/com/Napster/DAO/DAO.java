@@ -8,6 +8,6 @@ import java.util.List;
 public interface DAO <T, K>{
     void insertar(T a) throws SQLException;
     void actualizar(T a);
-    void eliminar(T a);
+    void eliminar(T a) throws SQLException;
     T obtenerid(K id);
 }

@@ -81,6 +81,13 @@ public class AddSong {
                 add.setText("ACTUALIZAR");
                 idSong.setConverter(Utils.songConverter());
                 idSong.getItems().setAll(MariaDBSong.listarTodos());
+                idSong.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+                    if (newValue != null) {
+                        tittle.setText(newValue.getNombre());
+                        duration.setText(newValue.getDuracion()+"");
+
+                    }
+                });
                 /*name.setText(actualArtist.getNombre());
                 nationality.setText(actualArtist.getNacionalidad());
                 url.setText(actualArtist.getFoto());*/

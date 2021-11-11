@@ -136,6 +136,24 @@ public class AddAlbum {
         }
 
     }
+    public void deleteAlbum(){
+        Connection conn;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            album.setId(idAlbum.getSelectionModel().getSelectedItem().getId());
+            try{
+                album.eliminar(album);
+                idAlbum.setConverter(Utils.albumConverter());
+                idAlbum.getItems().setAll(MariaDBAlbum.listarTodos());
+
+                Dialog.showInformation("ALBUM ELIMINADO","El album ha sido eliminado sin problemas","Puede continuar");
+
+            } catch (SQLException e){
+                Dialog.showError("ERROR","ERROR","ERROR");
+            }
+
+        }
+    }
 
     public static void changeWindow(AddAlbum.window w) {
         actual_window = w;

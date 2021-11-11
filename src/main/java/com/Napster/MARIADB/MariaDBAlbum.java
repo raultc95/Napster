@@ -11,7 +11,7 @@ import java.util.List;
 public class MariaDBAlbum extends Album implements AlbumDAO {
     final String INSERT ="INSERT INTO discos(nombre, fecha_publicacion,foto,id_artista) VALUES(?,?,?,?)";
     final String UPDATE ="UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artista=? WHERE id =?";
-    final String DELETE ="DELETE FROM artistas WHERE id=?";
+    final String DELETE ="DELETE FROM discos WHERE id=?";
     final static String GETALL ="SELECT id,nombre FROM discos";
     final String GETONE ="SELECT nombre, nacionalidad FROM generos WHERE id=?";
 
@@ -78,8 +78,20 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     }
 
     @Override
-    public void eliminar(Album a) {
+    public void eliminar(Album a) throws SQLException {
+        Connection conn = null;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            PreparedStatement q = null;
+            try {
+                q = conn.prepareStatement(DELETE);
+                q.setInt(1,a.getId());
+                q.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
 
+        }
     }
 
 

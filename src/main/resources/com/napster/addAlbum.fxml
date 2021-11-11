@@ -25,6 +25,6 @@
             <Insets top="2.0" />
          </padding></ComboBox>
       <Button fx:id="add" mnemonicParsing="false" onAction="#addAlbum" text="AÑADIR" />
-      <Button fx:id="delete" mnemonicParsing="false" text="BORRAR" />
+      <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteAlbum" text="BORRAR" />
    </children>
 </VBox>

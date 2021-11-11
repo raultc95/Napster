@@ -51,7 +51,18 @@ public class MariaDBGenre extends Genre implements GenreDAO {
 
     @Override
     public void actualizar(Genre a) {
-
+        Connection conn = null;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            try {
+                PreparedStatement q = conn.prepareStatement(UPDATE);
+                q.setString(1,a.getName());
+                q.setInt(2,a.getId());
+                q.executeUpdate();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override

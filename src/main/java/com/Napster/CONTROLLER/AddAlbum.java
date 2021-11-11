@@ -94,7 +94,7 @@ public class AddAlbum {
 
 
     }
-
+    @FXML
     public void addAlbum() {
         if (add.getText().equals("AÑADIR")) {
             Connection conn;

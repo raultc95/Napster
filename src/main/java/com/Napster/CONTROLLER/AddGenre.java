@@ -1,6 +1,7 @@
 package com.Napster.CONTROLLER;
 
 import com.Napster.MARIADB.Conection;
+import com.Napster.MARIADB.MariaDBAlbum;
 import com.Napster.MARIADB.MariaDBArtist;
 import com.Napster.MODEL.Genre;
 import com.Napster.MODEL.Song;
@@ -25,7 +26,6 @@ public class AddGenre {
     private ComboBox<Genre> idGenre = new ComboBox<>();
     private static AddGenre.window actual_window = AddGenre.window.ADD;
     MariaDBGenre gen=new MariaDBGenre();
-
 
 
     public enum window {
@@ -61,6 +61,7 @@ public class AddGenre {
     }
     @FXML
     public void addGenre(){
+        if (add.getText().equals("AÑADIR")){
         Connection conn;
         conn = Conection.getConexion();
         if(conn!=null){
@@ -77,8 +78,23 @@ public class AddGenre {
 
         }
 
+        }else if (add.getText().equals("BORRAR")) {
+            updateGenre();
+        }
 
 
+
+    }
+    @FXML
+    public void updateGenre(){
+        Connection conn;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            gen.setId(idGenre.getSelectionModel().getSelectedItem().getId());
+            gen.setName(genre.getText());
+            MariaDBGenre a = new MariaDBGenre();
+            a.actualizar(gen);
+        }
     }
     public static void changeWindow(AddGenre.window w){
         actual_window=w;

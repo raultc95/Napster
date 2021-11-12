@@ -36,7 +36,7 @@ public class AddArtist {
     @FXML
     private Button delete;
     @FXML
-    private ComboBox<Artist> idArtist=new ComboBox<>();
+    private ComboBox<Artist> idArtist = new ComboBox<>();
 
     private static window actual_window = window.ADD;
     private static MariaDBArtist actualArtist;
@@ -46,9 +46,11 @@ public class AddArtist {
         ADD("ADD"),
         UPDATE("UPDATE");
         private final String w;
+
         window(String w) {
             this.w = w;
         }
+
         public String getW() {
             return this.w;
         }
@@ -57,13 +59,13 @@ public class AddArtist {
 
     @FXML
     protected void initialize() {
-        switch (actual_window.getW()){
-            case "ADD"->{
+        switch (actual_window.getW()) {
+            case "ADD" -> {
                 delete.setVisible(false);
                 idArtist.setVisible(false);
 
             }
-            case "UPDATE"->{
+            case "UPDATE" -> {
                 add.setText("ACTUALIZAR");
                 idArtist.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
@@ -81,35 +83,35 @@ public class AddArtist {
     }
 
     @FXML
-    public void addArtist(){
-        if(add.getText().equals("AÑADIR")){
+    public void addArtist() {
+        if (add.getText().equals("AÑADIR")) {
             Connection conn;
             conn = Conection.getConexion();
-            if(conn!=null){
+            if (conn != null) {
                 artist.setNombre(name.getText());
                 artist.setNacionalidad(nationality.getText());
-                try{
+                try {
                     artist.insertar(new MariaDBArtist());
 
-                    Dialog.showInformation("Artista Añadido","El artista ha sido añadido sin problemas","Puede continuar");
+                    Dialog.showInformation("Artista Añadido", "El artista ha sido añadido sin problemas", "Puede continuar");
 
-                } catch (SQLException e){
-                    Dialog.showError("ERROR","ERROR","ERROR");
+                } catch (SQLException e) {
+                    Dialog.showError("ERROR", "ERROR", "ERROR");
                 }
-            } else{
-                Dialog.showError("Error de Conexion","No hay conexion a Internet","Verifique la conexion");
+            } else {
+                Dialog.showError("Error de Conexion", "No hay conexion a Internet", "Verifique la conexion");
             }
-        } else if (add.getText().equals("ACTUALIZAR")){
+        } else if (add.getText().equals("ACTUALIZAR")) {
             updadteArtist();
         }
 
 
-
     }
-    public void updadteArtist(){
+
+    public void updadteArtist() {
         Connection conn;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             artist.setId(idArtist.getSelectionModel().getSelectedItem().getId());
             artist.setNombre(name.getText());
             artist.setNacionalidad(nationality.getText());
@@ -120,26 +122,27 @@ public class AddArtist {
 
 
     }
-    public void deleteArtist(){
+
+    public void deleteArtist() {
         Connection conn;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             artist.setId(idArtist.getSelectionModel().getSelectedItem().getId());
-            try{
+            try {
                 artist.eliminar(artist);
                 idArtist.setConverter(Utils.artistConverter());
                 idArtist.setItems(FXCollections.observableList(MariaDBArtist.listarTodos()));
-                Dialog.showInformation("ARTISTA ELIMINADO","El artista ha sido eliminado sin problemas","Puede continuar");
+                Dialog.showInformation("ARTISTA ELIMINADO", "El artista ha sido eliminado sin problemas", "Puede continuar");
 
-            } catch (SQLException e){
-                Dialog.showError("ERROR","ERROR","ERROR");
+            } catch (SQLException e) {
+                Dialog.showError("ERROR", "ERROR", "ERROR");
             }
 
         }
     }
 
-    public static void changeWindow(window w){
-        actual_window=w;
+    public static void changeWindow(window w) {
+        actual_window = w;
     }
 }
 

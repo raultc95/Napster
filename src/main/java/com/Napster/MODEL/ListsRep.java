@@ -3,7 +3,7 @@ package com.Napster.MODEL;
 
 public class ListsRep {
     protected int id;
-    protected  String nombre;
+    protected String nombre;
     protected String descripcion;
     protected String creador;
 
@@ -24,12 +24,12 @@ public class ListsRep {
     }
 
     public ListsRep(String nombre) {
-        this.nombre=nombre;
+        this.nombre = nombre;
     }
 
     public ListsRep(int id, String nombre) {
-        this.id=id;
-        this.nombre=nombre;
+        this.id = id;
+        this.nombre = nombre;
     }
 
     public int getId() {

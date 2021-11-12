@@ -10,21 +10,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MariaDBGenre extends Genre implements GenreDAO {
-    final String INSERT ="INSERT INTO generos(titulo) VALUES(?)";
-    final String UPDATE ="UPDATE generos SET titulo=? WHERE id =?";
-    final String DELETE ="DELETE FROM generos WHERE id=?";
-    final static String  GETALL ="SELECT id,titulo FROM generos";
-    final String GETONE ="SELECT titulo FROM generos WHERE id=?";
+    final String INSERT = "INSERT INTO generos(titulo) VALUES(?)";
+    final String UPDATE = "UPDATE generos SET titulo=? WHERE id =?";
+    final String DELETE = "DELETE FROM generos WHERE id=?";
+    final static String GETALL = "SELECT id,titulo FROM generos";
+    final String GETONE = "SELECT titulo FROM generos WHERE id=?";
 
     private Connection con = null;
-    public MariaDBGenre(){
+
+    public MariaDBGenre() {
         super();
     }
-    public MariaDBGenre(int id, String name){
-        super(id,name);
+
+    public MariaDBGenre(int id, String name) {
+        super(id, name);
     }
 
-    public MariaDBGenre(String name){
+    public MariaDBGenre(String name) {
         super(name);
     }
 
@@ -53,11 +55,11 @@ public class MariaDBGenre extends Genre implements GenreDAO {
     public void actualizar(Genre a) {
         Connection conn = null;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             try {
                 PreparedStatement q = conn.prepareStatement(UPDATE);
-                q.setString(1,a.getName());
-                q.setInt(2,a.getId());
+                q.setString(1, a.getName());
+                q.setInt(2, a.getId());
                 q.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -81,9 +83,9 @@ public class MariaDBGenre extends Genre implements GenreDAO {
             ResultSet rs = st.executeQuery(GETALL);
 
             while (rs.next()) {
-               int id= rs.getInt("id");
+                int id = rs.getInt("id");
                 String titulo = rs.getString("titulo");
-                Genre a=new Genre(id,titulo);
+                Genre a = new Genre(id, titulo);
                 listado.add(a);
 
 

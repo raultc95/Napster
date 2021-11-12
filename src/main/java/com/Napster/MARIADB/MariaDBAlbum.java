@@ -1,4 +1,5 @@
 package com.Napster.MARIADB;
+
 import com.Napster.DAO.AlbumDAO;
 import com.Napster.MODEL.Album;
 import com.Napster.MODEL.Artist;
@@ -10,21 +11,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MariaDBAlbum extends Album implements AlbumDAO {
-    final String INSERT ="INSERT INTO discos(nombre, fecha_publicacion,foto,id_artista) VALUES(?,?,?,?)";
-    final String UPDATE ="UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artista=? WHERE id =?";
-    final String DELETE ="DELETE FROM discos WHERE id=?";
-    final static String GETALL ="SELECT id,nombre FROM discos";
-    final String GETONE ="SELECT nombre, nacionalidad FROM generos WHERE id=?";
+    final String INSERT = "INSERT INTO discos(nombre, fecha_publicacion,foto,id_artista) VALUES(?,?,?,?)";
+    final String UPDATE = "UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artista=? WHERE id =?";
+    final String DELETE = "DELETE FROM discos WHERE id=?";
+    final static String GETALL = "SELECT id,nombre FROM discos";
+    final String GETONE = "SELECT nombre, nacionalidad FROM generos WHERE id=?";
 
     private Connection con = null;
-    public MariaDBAlbum(){
+
+    public MariaDBAlbum() {
         super();
     }
-    public MariaDBAlbum(String nombre){
+
+    public MariaDBAlbum(String nombre) {
         super(nombre);
     }
-    public MariaDBAlbum(String nombre, LocalDate fecha_publicacion, String foto){
-        super(nombre,fecha_publicacion,foto);
+
+    public MariaDBAlbum(String nombre, LocalDate fecha_publicacion, String foto) {
+        super(nombre, fecha_publicacion, foto);
     }
 
     public MariaDBAlbum(int id) {
@@ -38,21 +42,20 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
         conn = Conection.getConexion();
 
         if (conn != null) {
-            PreparedStatement ps=null;
-            ResultSet rs=null;
+            PreparedStatement ps = null;
+            ResultSet rs = null;
             try {
                 PreparedStatement q = conn.prepareStatement(INSERT);
                 q.setString(1, this.nombre);
                 q.setDate(2, Date.valueOf(this.fecha_publicacion));
                 q.setString(3, this.foto);
-                q.setInt(4,this.getArtist().getId());
-                rs =q.executeQuery();
+                q.setInt(4, this.getArtist().getId());
+                rs = q.executeQuery();
                 q.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
         }
-
 
 
     }
@@ -61,15 +64,15 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     public void actualizar(Album a) {
         Connection conn = null;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             try {
                 PreparedStatement q = conn.prepareStatement(UPDATE);
-                q.setString(1,a.getNombre());
-                q.setDate(2,Date.valueOf(a.getFecha_publicacion()));
-                q.setString(3,getFoto());
+                q.setString(1, a.getNombre());
+                q.setDate(2, Date.valueOf(a.getFecha_publicacion()));
+                q.setString(3, getFoto());
                 //q.setInt(4,a.getN_reproducciones());
-                q.setInt(4,a.getArtist().getId());
-                q.setInt(5,a.getId());
+                q.setInt(4, a.getArtist().getId());
+                q.setInt(5, a.getId());
                 q.executeUpdate();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -82,11 +85,11 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     public void eliminar(Album a) throws SQLException {
         Connection conn = null;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             PreparedStatement q = null;
             try {
                 q = conn.prepareStatement(DELETE);
-                q.setInt(1,a.getId());
+                q.setInt(1, a.getId());
                 q.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -94,7 +97,6 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
 
         }
     }
-
 
     public static List<Album> listarTodos() {
         List<Album> listado = new ArrayList<>();
@@ -106,9 +108,9 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
             ResultSet rs = st.executeQuery(GETALL);
 
             while (rs.next()) {
-                int id= rs.getInt("id");
+                int id = rs.getInt("id");
                 String nombre = rs.getString("nombre");
-                Album a=new Album(id,nombre);
+                Album a = new Album(id, nombre);
                 listado.add(a);
 
 

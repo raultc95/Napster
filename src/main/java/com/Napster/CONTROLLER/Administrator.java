@@ -38,19 +38,20 @@ public class Administrator {
     @FXML
     private TableView<MariaDBSong> tableSong;
     @FXML
-    private TableColumn<Song,String> listSong;
+    private TableColumn<Song, String> listSong;
     @FXML
-    private TableColumn<Song,String> listArtist;
+    private TableColumn<Song, String> listArtist;
 
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         configuraTabla();
         tableSong.setItems(FXCollections.observableList(MariaDBSong.listarTodos()));
 
     }
+
     @FXML
-    private void addArtist(){
+    private void addArtist() {
         try {
             AddArtist.changeWindow(AddArtist.window.ADD);
             App.loadScene(new Stage(), "addArtist", "Administrar", true, true);
@@ -59,8 +60,9 @@ public class Administrator {
         }
 
     }
+
     @FXML
-    private void addSingle(){
+    private void addSingle() {
         try {
             AddSong.changeWindow(AddSong.window.ADD);
             App.loadScene(new Stage(), "addSong", "Administrar", true, true);
@@ -69,8 +71,9 @@ public class Administrator {
         }
 
     }
+
     @FXML
-    private void addAlbum(){
+    private void addAlbum() {
         try {
             AddAlbum.changeWindow(AddAlbum.window.ADD);
             App.loadScene(new Stage(), "addAlbum", "Administrar", true, true);
@@ -78,8 +81,9 @@ public class Administrator {
             e.printStackTrace();
         }
     }
+
     @FXML
-    private void addGenre(){
+    private void addGenre() {
         try {
             AddGenre.changeWindow(AddGenre.window.ADD);
             App.loadScene(new Stage(), "addGenre", "Administrar", true, true);
@@ -89,7 +93,7 @@ public class Administrator {
     }
 
     @FXML
-    private void updateArtist(){
+    private void updateArtist() {
         try {
             AddArtist.changeWindow(AddArtist.window.UPDATE);
             App.loadScene(new Stage(), "addArtist", "Administrar", true, true);
@@ -97,8 +101,9 @@ public class Administrator {
             e.printStackTrace();
         }
     }
+
     @FXML
-    private void updateSingle(){
+    private void updateSingle() {
         try {
             AddSong.changeWindow(AddSong.window.UPDATE);
             App.loadScene(new Stage(), "addSong", "Administrar", true, true);
@@ -107,8 +112,9 @@ public class Administrator {
         }
 
     }
+
     @FXML
-    private void updateAlbum(){
+    private void updateAlbum() {
         try {
             AddAlbum.changeWindow(AddAlbum.window.UPDATE);
             App.loadScene(new Stage(), "addAlbum", "Administrar", true, true);
@@ -116,8 +122,9 @@ public class Administrator {
             e.printStackTrace();
         }
     }
+
     @FXML
-    private void updateGenre(){
+    private void updateGenre() {
         try {
             AddGenre.changeWindow(AddGenre.window.UPDATE);
             App.loadScene(new Stage(), "addGenre", "Administrar", true, true);
@@ -126,6 +133,7 @@ public class Administrator {
         }
 
     }
+
     private void configuraTabla() {
         listSong.setCellValueFactory(lista -> {
             SimpleStringProperty v = new SimpleStringProperty();

@@ -57,11 +57,12 @@ public class LoginController {
         }
 
     }
+
     @FXML
-    private void registrar(){
+    private void registrar() {
         Connection conn;
         conn = Conection.getConexion();
-        if (conn != null){
+        if (conn != null) {
             windowUser.setNombre(user.getText());
             windowUser.setCorreo(mail.getText());
         }
@@ -69,7 +70,7 @@ public class LoginController {
             windowUser.insertar(new MariaDBUser());
             Dialog.showInformation("REGISTRO", "Registro realizado con exito", "Gracias por usar nuesrtra aplicacion");
 
-        } catch (SQLException e){
+        } catch (SQLException e) {
             Dialog.showError("ERROR EN EL REGISTRO", "El USUARIO y el CORREO ya existen", "Revise los datos");
         }
 

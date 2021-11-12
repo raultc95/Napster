@@ -94,6 +94,7 @@ public class AddAlbum {
 
 
     }
+
     @FXML
     public void addAlbum() {
         if (add.getText().equals("AÑADIR")) {
@@ -125,7 +126,7 @@ public class AddAlbum {
     public void updateAlbum() {
         Connection conn;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             album.setId(idAlbum.getSelectionModel().getSelectedItem().getId());
             album.setNombre(tittle.getText());
             album.setFecha_publicacion(date.getValue());
@@ -136,19 +137,20 @@ public class AddAlbum {
         }
 
     }
-    public void deleteAlbum(){
+
+    public void deleteAlbum() {
         Connection conn;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             album.setId(idAlbum.getSelectionModel().getSelectedItem().getId());
-            try{
+            try {
                 album.eliminar(album);
                 idAlbum.setConverter(Utils.albumConverter());
                 idAlbum.setItems(FXCollections.observableList(MariaDBAlbum.listarTodos()));
-                Dialog.showInformation("ALBUM ELIMINADO","El album ha sido eliminado sin problemas","Puede continuar");
+                Dialog.showInformation("ALBUM ELIMINADO", "El album ha sido eliminado sin problemas", "Puede continuar");
 
-            } catch (SQLException e){
-                Dialog.showError("ERROR","ERROR","ERROR");
+            } catch (SQLException e) {
+                Dialog.showError("ERROR", "ERROR", "ERROR");
             }
 
         }

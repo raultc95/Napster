@@ -19,11 +19,11 @@ public class Principal {
     @FXML
     private TableView<ListsRep> listarep;
     @FXML
-    private TableColumn<ListsRep,String> listado;
+    private TableColumn<ListsRep, String> listado;
 
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         configuraTabla();
         listarep.setItems(FXCollections.observableList(MariaDBListRep.listarTodos()));
 

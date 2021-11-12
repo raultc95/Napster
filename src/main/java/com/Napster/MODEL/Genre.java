@@ -6,8 +6,9 @@ public class Genre {
 
     public Genre() {
     }
-    public Genre(int id){
-        this.id=id;
+
+    public Genre(int id) {
+        this.id = id;
     }
 
     public Genre(int id, String name) {
@@ -42,7 +43,8 @@ public class Genre {
                 ", name='" + name + '\'' +
                 '}';
     }
-    public String toCombobox(){
-        return this.name +"."+this.id;
+
+    public String toCombobox() {
+        return this.name + "." + this.id;
     }
 }

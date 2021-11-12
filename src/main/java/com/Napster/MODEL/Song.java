@@ -9,16 +9,15 @@ public class Song {
     protected Genre genre;
 
 
-
-
-
     public Song() {
     }
-    public Song(int id){
-        this.id=id;
+
+    public Song(int id) {
+        this.id = id;
     }
+
     public Song(String nombre) {
-        this.nombre=nombre;
+        this.nombre = nombre;
     }
 
     public Song(String nombre, int duracion, int nreproducciones) {
@@ -64,7 +63,6 @@ public class Song {
     }
 
 
-
     public int getNreproducciones() {
         return nreproducciones;
     }
@@ -72,6 +70,7 @@ public class Song {
     public void setNreproducciones(int nreproducciones) {
         this.nreproducciones = nreproducciones;
     }
+
     public Album getAlbum() {
         return album;
     }
@@ -79,7 +78,8 @@ public class Song {
     public void setAlbum(Album album) {
         this.album = album;
     }
-    public Genre getGenre(){
+
+    public Genre getGenre() {
         return genre;
     }
 
@@ -96,8 +96,9 @@ public class Song {
                 ", nreproducciones=" + nreproducciones +
                 '}';
     }
-    public String toCombobox(){
-        return this.nombre +"."+this.id;
+
+    public String toCombobox() {
+        return this.nombre + "." + this.id;
     }
 
 

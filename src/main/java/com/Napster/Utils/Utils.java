@@ -12,17 +12,17 @@ import com.Napster.MODEL.Song;
 import javafx.util.StringConverter;
 
 public class Utils {
-    public static StringConverter<Artist> artistConverter(){
+    public static StringConverter<Artist> artistConverter() {
         return new StringConverter<>() {
             @Override
             public String toString(Artist object) {
-                return object==null ? null : object.toCombobox();
+                return object == null ? null : object.toCombobox();
             }
 
             @Override
             public Artist fromString(String s) {
                 MariaDBArtist a = null;
-                if (s !=null){
+                if (s != null) {
                     int id = Integer.parseInt(s.substring(s.lastIndexOf(".")));
                     a = new MariaDBArtist(id);
 
@@ -31,17 +31,18 @@ public class Utils {
             }
         };
     }
-    public static StringConverter<Album> albumConverter(){
+
+    public static StringConverter<Album> albumConverter() {
         return new StringConverter<>() {
             @Override
             public String toString(Album object) {
-                return object==null ? null : object.toCombobox();
+                return object == null ? null : object.toCombobox();
             }
 
             @Override
             public Album fromString(String s) {
                 MariaDBAlbum a = null;
-                if (s !=null){
+                if (s != null) {
                     int id = Integer.parseInt(s.substring(s.lastIndexOf(".")));
                     a = new MariaDBAlbum(id);
 
@@ -50,17 +51,18 @@ public class Utils {
             }
         };
     }
-    public static StringConverter<Genre> genreConverter(){
+
+    public static StringConverter<Genre> genreConverter() {
         return new StringConverter<>() {
             @Override
             public String toString(Genre object) {
-                return object==null ? null : object.toCombobox();
+                return object == null ? null : object.toCombobox();
             }
 
             @Override
             public Genre fromString(String s) {
                 MariaDBGenre a = null;
-                if (s !=null){
+                if (s != null) {
                     int id = Integer.parseInt(s.substring(s.lastIndexOf(".")));
                     a = new MariaDBGenre(id);
 
@@ -69,17 +71,18 @@ public class Utils {
             }
         };
     }
-    public static StringConverter<Song> songConverter(){
+
+    public static StringConverter<Song> songConverter() {
         return new StringConverter<>() {
             @Override
             public String toString(Song object) {
-                return object==null ? null : object.toCombobox();
+                return object == null ? null : object.toCombobox();
             }
 
             @Override
             public Song fromString(String s) {
                 MariaDBSong a = null;
-                if (s !=null){
+                if (s != null) {
                     int id = Integer.parseInt(s.substring(s.lastIndexOf(".")));
                     a = new MariaDBSong(id);
 

@@ -1,6 +1,6 @@
 package com.Napster.MODEL;
 
-public class Artist  {
+public class Artist {
     protected int id;
     protected String nombre;
     protected String nacionalidad;
@@ -17,8 +17,9 @@ public class Artist  {
 
     public Artist() {
     }
+
     public Artist(int id, String nombre) {
-        this.id=id;
+        this.id = id;
         this.nombre = nombre;
     }
 
@@ -36,19 +37,19 @@ public class Artist  {
     }
 
     public Artist(int id) {
-        this.id=id;
+        this.id = id;
     }
 
     public Artist(int id, String nombre, String nacionalidad) {
-        this.id=id;
+        this.id = id;
         this.nombre = nombre;
-        this.nacionalidad=nacionalidad;
+        this.nacionalidad = nacionalidad;
 
     }
 
     @Override
     public String toString() {
-        return "Artist{" + "id=" + id + ", nombre=" + nombre +  ", nacionalidad=" + nacionalidad +  ", foto=" + foto;
+        return "Artist{" + "id=" + id + ", nombre=" + nombre + ", nacionalidad=" + nacionalidad + ", foto=" + foto;
     }
 
     public int getId() {
@@ -82,7 +83,8 @@ public class Artist  {
     public void setFoto(String foto) {
         this.foto = foto;
     }
-    public String toCombobox(){
-        return this.nombre +"."+this.id;
+
+    public String toCombobox() {
+        return this.nombre + "." + this.id;
     }
 }

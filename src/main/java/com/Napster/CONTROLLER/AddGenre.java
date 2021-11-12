@@ -25,7 +25,7 @@ public class AddGenre {
     @FXML
     private ComboBox<Genre> idGenre = new ComboBox<>();
     private static AddGenre.window actual_window = AddGenre.window.ADD;
-    MariaDBGenre gen=new MariaDBGenre();
+    MariaDBGenre gen = new MariaDBGenre();
 
 
     public enum window {
@@ -41,14 +41,15 @@ public class AddGenre {
             return this.w;
         }
     }
+
     @FXML
-    protected void initialize(){
-        switch (actual_window.getW()){
-            case "ADD"->{
+    protected void initialize() {
+        switch (actual_window.getW()) {
+            case "ADD" -> {
                 idGenre.setVisible(false);
 
             }
-            case "UPDATE"->{
+            case "UPDATE" -> {
                 add.setText("BORRAR");
                 idGenre.setConverter(Utils.genreConverter());
                 idGenre.getItems().setAll(MariaDBGenre.listarTodos());
@@ -59,44 +60,46 @@ public class AddGenre {
         }
 
     }
+
     @FXML
-    public void addGenre(){
-        if (add.getText().equals("AÑADIR")){
-        Connection conn;
-        conn = Conection.getConexion();
-        if(conn!=null){
-            gen.setName(genre.getText());
-            try{
-                gen.insertar(new MariaDBGenre());
-                Dialog.showInformation("Genero Añadido","El Genero ha sido añadido sin problemas","Puede continuar");
+    public void addGenre() {
+        if (add.getText().equals("AÑADIR")) {
+            Connection conn;
+            conn = Conection.getConexion();
+            if (conn != null) {
+                gen.setName(genre.getText());
+                try {
+                    gen.insertar(new MariaDBGenre());
+                    Dialog.showInformation("Genero Añadido", "El Genero ha sido añadido sin problemas", "Puede continuar");
 
-            } catch (SQLException e){
-                Dialog.showError("ERROR","ERROR","ERROR");
+                } catch (SQLException e) {
+                    Dialog.showError("ERROR", "ERROR", "ERROR");
+                }
+            } else {
+                Dialog.showError("Error de Conexion", "No hay conexion a Internet", "Verifique la conexion");
+
             }
-        }else {
-            Dialog.showError("Error de Conexion","No hay conexion a Internet","Verifique la conexion");
 
-        }
-
-        }else if (add.getText().equals("BORRAR")) {
+        } else if (add.getText().equals("BORRAR")) {
             updateGenre();
         }
 
 
-
     }
+
     @FXML
-    public void updateGenre(){
+    public void updateGenre() {
         Connection conn;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             gen.setId(idGenre.getSelectionModel().getSelectedItem().getId());
             gen.setName(genre.getText());
             MariaDBGenre a = new MariaDBGenre();
             a.actualizar(gen);
         }
     }
-    public static void changeWindow(AddGenre.window w){
-        actual_window=w;
+
+    public static void changeWindow(AddGenre.window w) {
+        actual_window = w;
     }
 }

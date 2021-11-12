@@ -5,6 +5,7 @@ import com.Napster.MODEL.Artist;
 import com.Napster.MODEL.Song;
 
 import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,7 +23,7 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     public MariaDBAlbum(String nombre){
         super(nombre);
     }
-    public MariaDBAlbum(String nombre,int fecha_publicacion,String foto){
+    public MariaDBAlbum(String nombre, LocalDate fecha_publicacion, String foto){
         super(nombre,fecha_publicacion,foto);
     }
 
@@ -42,7 +43,7 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
             try {
                 PreparedStatement q = conn.prepareStatement(INSERT);
                 q.setString(1, this.nombre);
-                q.setInt(2, this.fecha_publicacion);
+                q.setDate(2, Date.valueOf(this.fecha_publicacion));
                 q.setString(3, this.foto);
                 q.setInt(4,this.getArtist().getId());
                 rs =q.executeQuery();
@@ -64,7 +65,7 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
             try {
                 PreparedStatement q = conn.prepareStatement(UPDATE);
                 q.setString(1,a.getNombre());
-                q.setInt(2,a.getFecha_publicacion());
+                q.setDate(2,Date.valueOf(a.getFecha_publicacion()));
                 q.setString(3,getFoto());
                 //q.setInt(4,a.getN_reproducciones());
                 q.setInt(4,a.getArtist().getId());

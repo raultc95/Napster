@@ -24,7 +24,7 @@ public class AddAlbum {
     @FXML
     private TextField tittle;
     @FXML
-    private TextField date;
+    private DatePicker date;
     @FXML
     private TextField url;
     @FXML
@@ -78,7 +78,7 @@ public class AddAlbum {
                 idAlbum.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                     if (newValue != null) {
                         tittle.setText(newValue.getNombre());
-                        date.setText(newValue.getFecha_publicacion()+"");
+                        date.setValue(newValue.getFecha_publicacion());
                         url.setText(newValue.getFoto());
 
                     }
@@ -101,7 +101,7 @@ public class AddAlbum {
             conn = Conection.getConexion();
             if (conn != null) {
                 album.setNombre(tittle.getText());
-                album.setFecha_publicacion(Integer.parseInt(date.getText()));
+                album.setFecha_publicacion(date.getValue());
                 album.setArtist(listArtist.getSelectionModel().getSelectedItem());
                 try {
                     album.insertar(new MariaDBAlbum());
@@ -128,7 +128,7 @@ public class AddAlbum {
         if(conn!=null){
             album.setId(idAlbum.getSelectionModel().getSelectedItem().getId());
             album.setNombre(tittle.getText());
-            album.setFecha_publicacion(Integer.parseInt(date.getText()));
+            album.setFecha_publicacion(date.getValue());
             album.setArtist(listArtist.getSelectionModel().getSelectedItem());
             MariaDBAlbum a = new MariaDBAlbum();
             a.actualizar(album);

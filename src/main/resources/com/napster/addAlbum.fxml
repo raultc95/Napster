@@ -13,7 +13,7 @@
       <Label text="NOMBRE" />
       <TextField fx:id="tittle" />
        <Label text="FECHA DE PUBLICACION" />
-       <TextField fx:id="date" />
+       <DatePicker fx:id="date" />
       <Button mnemonicParsing="false" text="FOTO" />
       <TextField fx:id="url" promptText="URL IMAGEN">
          <VBox.margin>

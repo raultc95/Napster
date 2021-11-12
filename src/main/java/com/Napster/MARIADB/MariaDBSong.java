@@ -110,6 +110,11 @@ public class MariaDBSong extends Song implements SongDAO {
 
     }
 
+    @Override
+    public Song obtenerid(Integer id) {
+        return null;
+    }
+
 
     public static List<MariaDBSong> listarTodos() {
         List<MariaDBSong> listado = new ArrayList<>();
@@ -137,7 +142,7 @@ public class MariaDBSong extends Song implements SongDAO {
     }
 
 
-    @Override
+  /*  @Override
     public Song obtenerid(Integer id) {
         Song result = null;
         Connection conn;
@@ -187,5 +192,5 @@ public class MariaDBSong extends Song implements SongDAO {
         }
 
         return result;
-    }
+    }*/
 }

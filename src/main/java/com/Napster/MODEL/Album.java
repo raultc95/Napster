@@ -1,9 +1,12 @@
 package com.Napster.MODEL;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 public class Album {
     protected int id;
     protected String nombre;
-    protected int fecha_publicacion;
+    protected LocalDate fecha_publicacion;
     protected String foto;
     protected int n_reproducciones;
     protected Artist artist;
@@ -13,20 +16,20 @@ public class Album {
     public Album() {
     }
 
-    public Album(String nombre, int fecha_publicacion, String foto) {
+    public Album(String nombre, LocalDate fecha_publicacion, String foto) {
         this.nombre = nombre;
         this.fecha_publicacion = fecha_publicacion;
         this.foto = foto;
     }
 
-    public Album(String nombre, int fecha_publicacion, String foto, int n_reproducciones) {
+    public Album(String nombre, LocalDate fecha_publicacion, String foto, int n_reproducciones) {
         this.nombre = nombre;
         this.fecha_publicacion = fecha_publicacion;
         this.foto = foto;
         this.n_reproducciones = n_reproducciones;
     }
 
-    public Album(int id, String nombre, int fecha_publicacion, String foto, int n_reproducciones) {
+    public Album(int id, String nombre, LocalDate fecha_publicacion, String foto, int n_reproducciones) {
         this.id = id;
         this.nombre = nombre;
         this.fecha_publicacion = fecha_publicacion;
@@ -61,11 +64,11 @@ public class Album {
     }
 
 
-    public int getFecha_publicacion() {
+    public LocalDate getFecha_publicacion() {
         return fecha_publicacion;
     }
 
-    public void setFecha_publicacion(int fecha_publicacion) {
+    public void setFecha_publicacion(LocalDate fecha_publicacion) {
         this.fecha_publicacion = fecha_publicacion;
     }
 

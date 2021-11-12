@@ -13,7 +13,7 @@ public class MariaDBSong extends Song implements SongDAO {
     final String INSERT = "INSERT INTO canciones(titulo, duracion,id_genero,id_disco) VALUES(?,?,?,?)";
     final String GETDISC = "SELECT id,nombre,fecha_publicacion,foto,id_artista from discos WHERE id=?";
     final String UPDATE = "UPDATE canciones SET titulo=?, duracion=?, id_genero=?,id_disco=? WHERE id =?";
-    final String DELETE = "DELETE FROM cacniones WHERE id=?";
+    final String DELETE = "DELETE FROM canciones WHERE id=?";
     final static String GETALL = "SELECT id,titulo FROM canciones";
     final String GETONE = "SELECT id,titulo,duracion,id_genero,n_reproducciones,id_disco FROM canciones WHERE id=?";
     final String GETARTDISC = "SELECT nombre FROM artistas WHERE id=?";
@@ -93,7 +93,20 @@ public class MariaDBSong extends Song implements SongDAO {
     }
 
     @Override
-    public void eliminar(Song a) {
+    public void eliminar(Song a) throws SQLException {
+        Connection conn = null;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            PreparedStatement q = null;
+            try {
+                q = conn.prepareStatement(DELETE);
+                q.setInt(1,a.getId());
+                q.execute();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
 
     }
 

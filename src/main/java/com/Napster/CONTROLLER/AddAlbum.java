@@ -144,8 +144,7 @@ public class AddAlbum {
             try{
                 album.eliminar(album);
                 idAlbum.setConverter(Utils.albumConverter());
-                idAlbum.getItems().setAll(MariaDBAlbum.listarTodos());
-
+                idAlbum.setItems(FXCollections.observableList(MariaDBAlbum.listarTodos()));
                 Dialog.showInformation("ALBUM ELIMINADO","El album ha sido eliminado sin problemas","Puede continuar");
 
             } catch (SQLException e){

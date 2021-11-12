@@ -2,9 +2,11 @@ package com.Napster.CONTROLLER;
 
 import com.Napster.DAO.ArtistDAO;
 import com.Napster.MARIADB.Conection;
+import com.Napster.MARIADB.MariaDBAlbum;
 import com.Napster.MARIADB.MariaDBArtist;
 import com.Napster.Utils.Dialog;
 import com.Napster.Utils.Utils;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
@@ -126,8 +128,7 @@ public class AddArtist {
             try{
                 artist.eliminar(artist);
                 idArtist.setConverter(Utils.artistConverter());
-                idArtist.getItems().setAll(MariaDBArtist.listarTodos());
-
+                idArtist.setItems(FXCollections.observableList(MariaDBArtist.listarTodos()));
                 Dialog.showInformation("ARTISTA ELIMINADO","El artista ha sido eliminado sin problemas","Puede continuar");
 
             } catch (SQLException e){

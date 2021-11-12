@@ -32,6 +32,6 @@
             <Insets top="10.0" />
          </VBox.margin>
       </Button>
-      <Button fx:id="delete" mnemonicParsing="false" text="BORRAR" />
+      <Button fx:id="delete" mnemonicParsing="false" onAction="#deleteSong" text="BORRAR" />
    </children>
 </VBox>

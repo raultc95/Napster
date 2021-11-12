@@ -136,6 +136,23 @@ public class AddSong {
             s.actualizar(song);
         }
     }
+    public void deleteSong(){
+        Connection conn;
+        conn = Conection.getConexion();
+        if(conn!=null){
+            song.setId(idSong.getSelectionModel().getSelectedItem().getId());
+            try{
+                song.eliminar(song);
+                idSong.setConverter(Utils.songConverter());
+                idSong.getItems().setAll(MariaDBSong.listarTodos());
+                Dialog.showInformation("CANCION ELIMINADA","La cancion ha sido eliminado sin problemas","Puede continuar");
+
+            } catch (SQLException e){
+                Dialog.showError("ERROR","ERROR","ERROR");
+            }
+
+        }
+    }
 }
 
 

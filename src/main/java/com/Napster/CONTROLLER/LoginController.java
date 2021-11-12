@@ -2,6 +2,7 @@ package com.Napster.CONTROLLER;
 
 import com.Napster.App;
 import com.Napster.MARIADB.Conection;
+import com.Napster.MARIADB.MariaDBUser;
 import com.Napster.Utils.Dialog;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,6 +11,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class LoginController {
     @FXML
@@ -18,6 +20,10 @@ public class LoginController {
     private TextField user;
     @FXML
     private Button login;
+    @FXML
+    private Button register;
+
+    MariaDBUser windowUser = new MariaDBUser();
 
 
     @FXML
@@ -48,6 +54,23 @@ public class LoginController {
                 }
             }
 
+        }
+
+    }
+    @FXML
+    private void registrar(){
+        Connection conn;
+        conn = Conection.getConexion();
+        if (conn != null){
+            windowUser.setNombre(user.getText());
+            windowUser.setCorreo(mail.getText());
+        }
+        try {
+            windowUser.insertar(new MariaDBUser());
+            Dialog.showInformation("REGISTRO", "Registro realizado con exito", "Gracias por usar nuesrtra aplicacion");
+
+        } catch (SQLException e){
+            Dialog.showError("ERROR EN EL REGISTRO", "El USUARIO y el CORREO ya existen", "Revise los datos");
         }
 
     }

@@ -29,5 +29,10 @@
             <Insets left="40.0" right="40.0" top="40.0" />
          </VBox.margin>
       </Button>
+      <Button fx:id="register" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#registrar" text="REGISTRARSE">
+         <VBox.margin>
+            <Insets left="40.0" right="40.0" top="15.0" />
+         </VBox.margin>
+      </Button>
    </children>
 </VBox>

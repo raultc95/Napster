@@ -7,8 +7,10 @@ public class ListsRep {
     protected String descripcion;
     protected String creador;
 
+
     public ListsRep() {
     }
+
 
     public ListsRep(String nombre, String descripcion, String creador) {
         this.nombre = nombre;

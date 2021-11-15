@@ -11,6 +11,7 @@ public class User {
     List<ListsRep> playlist;
 
     public User() {
+        id=0;
     }
 
     public User(String nombre, String correo, String foto) {

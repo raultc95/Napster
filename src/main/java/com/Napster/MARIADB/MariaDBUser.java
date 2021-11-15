@@ -1,7 +1,9 @@
 package com.Napster.MARIADB;
 
+import com.Napster.CONTROLLER.LoginController;
 import com.Napster.DAO.UserDAO;
 import com.Napster.MODEL.Artist;
+import com.Napster.MODEL.ListsRep;
 import com.Napster.MODEL.User;
 
 import java.sql.Connection;
@@ -15,7 +17,7 @@ public class MariaDBUser extends User implements UserDAO {
     final String UPDATE = "UPDATE usuarios SET nombre=?, correo=?, foto=? WHERE id =?";
     final String DELETE = "DELETE FROM usuarios WHERE id=?";
     final static String GETALL = "SELECT id,nombre, nacionalidad FROM artistas";
-    final String GETONE = "SELECT nombre, nacionalidad FROM generos WHERE id=?";
+    final static String GETONE = "SELECT id, nombre, correo FROM usuarios WHERE nombre=? AND correo=?";
 
     private Connection con = null;
 
@@ -36,9 +38,9 @@ public class MariaDBUser extends User implements UserDAO {
             PreparedStatement ps = null;
             ResultSet rs = null;
             PreparedStatement q = conn.prepareStatement(INSERT);
-            q.setString(1, this.nombre);
-            q.setString(2, this.correo);
-            q.setString(3, this.foto);
+            q.setString(1, a.getNombre());
+            q.setString(2, a.getCorreo());
+            q.setString(3, a.getFoto());
             rs = q.executeQuery();
             q.close();
         }
@@ -58,6 +60,20 @@ public class MariaDBUser extends User implements UserDAO {
 
     public static List<User> listarTodos() {
         return null;
+    }
+    public static Boolean existeUsuario(User u) throws SQLException {
+        Connection conn = Conection.getConexion();
+        LoginController.usuarioActual=new User();
+        PreparedStatement q = conn.prepareStatement(GETONE);
+        q.setString(1,u.getNombre());
+        q.setString(2,u.getCorreo());
+        ResultSet rs=q.executeQuery();
+
+        while (rs.next()) {
+            int id = rs.getInt("id");
+            LoginController.usuarioActual.setId(id);
+        }
+        return LoginController.usuarioActual.getId()!=0;
     }
 
     @Override

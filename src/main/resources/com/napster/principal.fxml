@@ -33,12 +33,12 @@
 
    </left>
    <center>
-      <TableView prefHeight="200.0" prefWidth="713.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="listSong" prefHeight="200.0" prefWidth="713.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="277.0" text="NOMBRE" />
-          <TableColumn prefWidth="135.0" text="ARTISTA" />
-            <TableColumn prefWidth="99.0" text="ALBUM" />
-            <TableColumn prefWidth="68.0" text="GENERO" />
+          <TableColumn fx:id="canciones" prefWidth="277.0" text="NOMBRE" />
+          <TableColumn fx:id="artista" prefWidth="135.0" text="ARTISTA" />
+            <TableColumn fx:id="album" prefWidth="99.0" text="ALBUM" />
+            <TableColumn fx:id="genero" prefWidth="68.0" text="GENERO" />
             <TableColumn prefWidth="122.0" text="ESCUCHADAS" />
         </columns>
       </TableView>

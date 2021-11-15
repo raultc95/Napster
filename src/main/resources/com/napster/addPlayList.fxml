@@ -4,8 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.Napster.CONTROLLER.AddListRep">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.AddListRep">
    <top>
       <VBox alignment="CENTER" prefHeight="101.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
@@ -27,9 +26,9 @@
       </VBox>
    </top>
    <left>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="listSong" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="105.0" text="CANCION" />
+          <TableColumn fx:id="songCol" prefWidth="105.0" text="CANCION" />
           <TableColumn prefWidth="93.0" text="ALBUM" />
         </columns>
          <BorderPane.margin>

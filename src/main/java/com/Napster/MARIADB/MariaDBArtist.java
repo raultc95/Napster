@@ -126,7 +126,7 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
     }
 
     @Override
-    public  Artist obtenerid(Integer id) {
+    public  Artist obtenerid(int id) {
         Artist result = new Artist();
         Connection conn;
         conn = Conection.getConexion();

@@ -10,6 +10,7 @@ public class Album {
     protected String foto;
     protected int n_reproducciones;
     protected Artist artist;
+    protected Genre genre;
 
 
 
@@ -46,6 +47,9 @@ public class Album {
         this.nombre = nombre;
     }
 
+    public Album(int id) {
+        this.id = id;
+    }
 
     public int getId() {
         return id;
@@ -95,6 +99,7 @@ public class Album {
         this.artist = artist;
     }
 
+
     @Override
     public String toString() {
         return "Album{" +
@@ -108,4 +113,5 @@ public class Album {
     public String toCombobox(){
         return this.nombre +"."+this.id;
     }
+
 }

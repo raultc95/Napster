@@ -15,7 +15,7 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     final String UPDATE = "UPDATE discos SET nombre=?, fecha_publicacion=?, foto=?,id_artista=? WHERE id =?";
     final String DELETE = "DELETE FROM discos WHERE id=?";
     final static String GETALL = "SELECT id,nombre FROM discos";
-    final String GETONE = "SELECT nombre, nacionalidad FROM generos WHERE id=?";
+    final String GETONE = "SELECT id, nombre, id_artista FROM discos WHERE id=?";
 
     private Connection con = null;
 
@@ -124,7 +124,30 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
     }
 
     @Override
-    public Album obtenerid(Integer id) {
-        return null;
+    public Album obtenerid(int id) {
+        Album result = null;
+        Connection conn = Conection.getConexion();
+        if (conn != null) {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            PreparedStatement q = null;
+            try {
+                q = conn.prepareStatement(GETONE);
+                q.setInt(1, id);
+                rs = q.executeQuery();
+                while (rs.next()) {
+                    result = new Album();
+                    result.setId(rs.getInt("id"));
+                    result.setNombre(rs.getString("nombre"));
+                    //result.setAlbum(new MariaDBAlbum().obtenerid(rs.getInt("id_disco")));
+                    //result.setGenre(new MariaDBGenre().obtenerid(rs.getInt("id_genero")));
+                    result.setArtist(new MariaDBArtist().obtenerid(rs.getInt("id_artista")));
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }

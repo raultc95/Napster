@@ -96,11 +96,11 @@ public class MariaDBSong extends Song implements SongDAO {
     public void eliminar(Song a) throws SQLException {
         Connection conn = null;
         conn = Conection.getConexion();
-        if(conn!=null){
+        if (conn != null) {
             PreparedStatement q = null;
             try {
                 q = conn.prepareStatement(DELETE);
-                q.setInt(1,a.getId());
+                q.setInt(1, a.getId());
                 q.execute();
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -111,35 +111,57 @@ public class MariaDBSong extends Song implements SongDAO {
     }
 
     @Override
-    public Song obtenerid(Integer id) {
-        return null;
-    }
+    public Song obtenerid(int id) {
+        Song result = null;
+        Connection conn = Conection.getConexion();
+        if (conn != null) {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            PreparedStatement q = null;
+            try {
+                q = conn.prepareStatement(GETONE);
+                q.setInt(1, id);
+                rs = q.executeQuery();
+                while (rs.next()) {
+                    result = new Song();
+                    result.setId(rs.getInt("id"));
+                    result.setNombre(rs.getString("titulo"));
+                    result.setAlbum(new MariaDBAlbum().obtenerid(rs.getInt("id_disco")));
+                    result.setGenre(new MariaDBGenre().obtenerid(rs.getInt("id_genero")));
+                }
 
-
-    public static List<MariaDBSong> listarTodos() {
-        List<MariaDBSong> listado = new ArrayList<>();
-        Connection conn;
-        conn = Conection.getConexion();
-
-        try {
-            Statement st = conn.createStatement();
-            ResultSet rs = st.executeQuery(GETALL);
-
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                String nombre = rs.getString("titulo");
-                MariaDBSong a = new MariaDBSong(id, nombre);
-                listado.add(a);
-
-
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            rs.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            listado = new ArrayList<>();
         }
-        return listado;
+        return result;
     }
+
+
+
+
+        public static List<MariaDBSong> listarTodos() {
+            List<MariaDBSong> listado = new ArrayList<>();
+            Connection conn = Conection.getConexion();
+
+            try {
+                Statement st = conn.createStatement();
+                ResultSet rs = st.executeQuery(GETALL);
+
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String nombre = rs.getString("titulo");
+                    MariaDBSong a = new MariaDBSong(id, nombre);
+                    listado.add(a);
+
+                }
+                rs.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+                listado = new ArrayList<>();
+            }
+            return listado;
+        }
 
 
   /*  @Override
@@ -193,4 +215,6 @@ public class MariaDBSong extends Song implements SongDAO {
 
         return result;
     }*/
+
 }
+

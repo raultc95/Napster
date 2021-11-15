@@ -77,7 +77,7 @@ public class MariaDBUser extends User implements UserDAO {
     }
 
     @Override
-    public User obtenerid(Integer id) {
+    public User obtenerid(int id) {
         return null;
     }
 }

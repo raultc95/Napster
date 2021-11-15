@@ -18,7 +18,7 @@ public class Principal {
     @FXML
     private ImageView imguser;
     @FXML
-    private TableView<ListsRep> listSong;
+    private TableView<Song> listSong;
     @FXML
     private TableView<ListsRep> listarep;
     @FXML
@@ -26,11 +26,11 @@ public class Principal {
     @FXML
     private TableColumn<Song,String> canciones;
     @FXML
-    private TableColumn<Artist,String> artista;
+    private TableColumn<Song,String> artista;
     @FXML
-    private TableColumn<Album,String> album;
+    private TableColumn<Song,String> album;
     @FXML
-    private TableColumn<Genre,String> genero;
+    private TableColumn<Song,String> genero;
 
 
 
@@ -49,15 +49,34 @@ public class Principal {
             v.setValue(lista.getValue().getNombre());
             return v;
         });
-    }
-    private void tablaCanciones(ListsRep lista){
-        List<ArrayList> listadeCanciones = MariaDBListRep.listarCanciones(lista);
-        //listSong.setItems(FXCollections.observableArrayList(listadeCanciones));
         canciones.setCellValueFactory(aux -> {
             SimpleStringProperty v = new SimpleStringProperty();
             v.setValue(aux.getValue().getNombre());
             return v;
         });
+        artista.setCellValueFactory(aux ->{
+            SimpleStringProperty v = new SimpleStringProperty();
+            v.setValue(aux.getValue().getAlbum().getArtist().getNombre());
+            return v;
+        });
+        album.setCellValueFactory(aux ->{
+            SimpleStringProperty v = new SimpleStringProperty();
+            v.setValue(aux.getValue().getAlbum().getNombre());
+            return v;
+        });
+        genero.setCellValueFactory(aux ->{
+            SimpleStringProperty v = new SimpleStringProperty();
+            v.setValue(aux.getValue().getGenre().getName());
+            return v;
+        });
+    }
+
+    private void tablaCanciones(ListsRep lista){
+        List<Song> listadeCanciones = MariaDBListRep.listarCanciones(lista);
+        listSong.setItems(FXCollections.observableList(listadeCanciones));
+        //listSong.setItems(FXCollections.observableArrayList(listadeCanciones));
+        listSong.refresh();
+
     }
 
 }

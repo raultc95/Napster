@@ -4,6 +4,7 @@ import com.Napster.DAO.GenreDAO;
 import com.Napster.MODEL.Album;
 import com.Napster.MODEL.Artist;
 import com.Napster.MODEL.Genre;
+import com.Napster.MODEL.Song;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ public class MariaDBGenre extends Genre implements GenreDAO {
     final String UPDATE = "UPDATE generos SET titulo=? WHERE id =?";
     final String DELETE = "DELETE FROM generos WHERE id=?";
     final static String GETALL = "SELECT id,titulo FROM generos";
-    final String GETONE = "SELECT titulo FROM generos WHERE id=?";
+    final String GETONE = "SELECT id, titulo FROM generos WHERE id=?";
 
     private Connection con = null;
 
@@ -99,7 +100,28 @@ public class MariaDBGenre extends Genre implements GenreDAO {
     }
 
     @Override
-    public Genre obtenerid(Integer id) {
-        return null;
+    public Genre obtenerid(int id) {
+        Genre result = null;
+        Connection conn = Conection.getConexion();
+        if (conn != null) {
+            PreparedStatement ps = null;
+            ResultSet rs = null;
+            PreparedStatement q = null;
+            try {
+                q = conn.prepareStatement(GETONE);
+                q.setInt(1, id);
+                rs = q.executeQuery();
+                while (rs.next()) {
+                    result = new Genre();
+                    result.setId(rs.getInt("id"));
+                    result.setName(rs.getString("titulo"));
+
+                }
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return result;
     }
 }

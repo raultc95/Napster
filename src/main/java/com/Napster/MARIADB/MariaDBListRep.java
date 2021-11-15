@@ -3,6 +3,7 @@ package com.Napster.MARIADB;
 import com.Napster.DAO.ListRepDAO;
 import com.Napster.MODEL.Genre;
 import com.Napster.MODEL.ListsRep;
+import com.Napster.MODEL.Song;
 import com.Napster.MODEL.User;
 
 import java.sql.*;
@@ -17,11 +18,12 @@ public class MariaDBListRep extends ListsRep implements ListRepDAO {
     final static String GETALL = "SELECT id,nombre, descripcion,id_creador FROM listas_de_reproduccion";
     final static String GETONE = "SELECT id,nombre FROM listas_de_reproduccion WHERE id=?";
     final static String GETLISTUSER = "SELECT  id, nombre FROM listas_de_reproduccion WHERE id_creador=?";
-    final static String LISTADO = "SELECT canciones.titulo,artistas.nombre,discos.nombre AS album ,generos.titulo AS genero\n" +
+    final static String LISTADO="SELECT id_cancion FROM cancion_play WHERE id_play=?";
+    /*final static String LISTADO = "SELECT canciones.titulo,artistas.nombre,discos.nombre AS album ,generos.titulo AS genero\n" +
             "FROM canciones,artistas,listas_de_reproduccion,cancion_play,discos,generos\n" +
             "WHERE canciones.id=cancion_play.id_cancion AND listas_de_reproduccion.id=cancion_play.id_play\n" +
             "AND listas_de_reproduccion.id=? AND canciones.id_disco=discos.id AND discos.id_artista=artistas.id\n" +
-            "AND canciones.id_genero=generos.id";
+            "AND canciones.id_genero=generos.id";*/
 
     private Connection con = null;
 
@@ -70,8 +72,8 @@ public class MariaDBListRep extends ListsRep implements ListRepDAO {
         return listado;
     }
 
-    public static List<ArrayList> listarCanciones(ListsRep list) {
-        List<ArrayList> listado = new ArrayList<>();
+    public static List<Song> listarCanciones(ListsRep list) {
+        List<Song> listado = new ArrayList<>();
         Connection conn;
         conn = Conection.getConexion();
 
@@ -81,13 +83,8 @@ public class MariaDBListRep extends ListsRep implements ListRepDAO {
             ResultSet rs = q.executeQuery();
 
             while (rs.next()) {
-                String titulo = rs.getString("titulo");
-                String nombre = rs.getString("nombre");
-                String album = rs.getString("album");
-                String genero = rs.getString("genero");
-
-                ArrayList<String> lista= new ArrayList<>();
-                listado.add(lista);
+                Song s = new MariaDBSong().obtenerid(rs.getInt("id_cancion"));
+                listado.add(s);
             }
             rs.close();
         } catch (SQLException e) {
@@ -122,7 +119,7 @@ public class MariaDBListRep extends ListsRep implements ListRepDAO {
 
 
     @Override
-    public ListsRep obtenerid(Integer id) {
+    public ListsRep obtenerid(int id) {
         return null;
     }
 }

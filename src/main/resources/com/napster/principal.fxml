@@ -46,15 +46,14 @@
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
+          <Menu mnemonicParsing="false" text="CREACION">
+               <items>
+                  <Menu mnemonicParsing="false" text="Lista de Reproduccion">
+                    <items>
+                      <MenuItem fx:id="addList" mnemonicParsing="false" onAction="#ventanaCreacion" text="Nueva" />
+                    </items>
+                  </Menu>
+               </items>
           </Menu>
           <Menu mnemonicParsing="false" text="SOBRE">
             <items>

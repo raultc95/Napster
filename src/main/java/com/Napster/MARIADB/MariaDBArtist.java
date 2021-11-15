@@ -16,7 +16,7 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
     final String UPDATE = "UPDATE artistas SET  nombre=?, nacionalidad=?, foto=? WHERE id =?";
     final String DELETE = "DELETE FROM artistas WHERE id=?";
     final static String GETALL = "SELECT id,nombre,nacionalidad FROM artistas";
-    final static String GETONE = "SELECT nombre, nacionalidad FROM artistas WHERE id=?";
+    final static String GETONE = "SELECT id,nombre, nacionalidad FROM artistas WHERE id=?";
 
     private Connection con = null;
 
@@ -126,13 +126,13 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
     }
 
     @Override
-    public  Artist obtenerid(int id) {
+    public Artist obtenerid(int id) {
         Artist result = new Artist();
         Connection conn;
         conn = Conection.getConexion();
         try {
             PreparedStatement q = conn.prepareStatement(GETONE);
-            q.setInt(1, this.id);
+            q.setInt(1, id);
             ResultSet rs = q.executeQuery();
 
             while (rs.next()) {

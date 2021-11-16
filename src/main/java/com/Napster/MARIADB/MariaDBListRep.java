@@ -12,18 +12,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class MariaDBListRep extends ListsRep implements ListRepDAO {
-    final String INSERT = "INSERT INTO listas_de_reproduccion(id, nombre, descripcion,id_creador) VALUES(?,?,?,?,?)";
-    final String UPDATE = "UPDATE listas_de_reproduccion SET nombre=?, descripcion=?, id_creador=? WHERE id =?";
-    final String DELETE = "DELETE FROM listas_de_reproduccion WHERE id=?";
     final static String GETALL = "SELECT id,nombre, descripcion,id_creador FROM listas_de_reproduccion";
-    final static String GETONE = "SELECT id,nombre FROM listas_de_reproduccion WHERE id=?";
     final static String GETLISTUSER = "SELECT  id, nombre FROM listas_de_reproduccion WHERE id_creador=?";
     final static String LISTADO="SELECT id_cancion FROM cancion_play WHERE id_play=?";
-    /*final static String LISTADO = "SELECT canciones.titulo,artistas.nombre,discos.nombre AS album ,generos.titulo AS genero\n" +
-            "FROM canciones,artistas,listas_de_reproduccion,cancion_play,discos,generos\n" +
-            "WHERE canciones.id=cancion_play.id_cancion AND listas_de_reproduccion.id=cancion_play.id_play\n" +
-            "AND listas_de_reproduccion.id=? AND canciones.id_disco=discos.id AND discos.id_artista=artistas.id\n" +
-            "AND canciones.id_genero=generos.id";*/
+
 
     private Connection con = null;
 

@@ -29,7 +29,10 @@ public class LoginController {
     MariaDBUser windowUser = new MariaDBUser();
     public static User usuarioActual;
 
-
+    /**
+     * Menu principal, con un registro, inicio de sesion y un inicio de sesion para el administrador,
+     * que seria el encargado de añadir y eliminar canciones
+     */
     @FXML
     private void initialize() {
 

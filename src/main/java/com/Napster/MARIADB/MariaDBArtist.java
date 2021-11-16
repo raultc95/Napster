@@ -98,7 +98,10 @@ public class MariaDBArtist extends Artist implements ArtistDAO {
 
     }
 
-
+    /**
+     * Con esto puedo listar y ya apareceria en el comboBox
+     * @return
+     */
     public static List<Artist> listarTodos() {
         List<Artist> listado = new ArrayList<>();
         Connection conn;

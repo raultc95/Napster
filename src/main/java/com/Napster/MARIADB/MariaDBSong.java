@@ -11,12 +11,11 @@ import java.util.List;
 
 public class MariaDBSong extends Song implements SongDAO {
     final String INSERT = "INSERT INTO canciones(titulo, duracion,id_genero,id_disco) VALUES(?,?,?,?)";
-    final String GETDISC = "SELECT id,nombre,fecha_publicacion,foto,id_artista from discos WHERE id=?";
     final String UPDATE = "UPDATE canciones SET titulo=?, duracion=?, id_genero=?,id_disco=? WHERE id =?";
     final String DELETE = "DELETE FROM canciones WHERE id=?";
     final static String GETALL = "SELECT id,titulo FROM canciones";
     final String GETONE = "SELECT id,titulo,duracion,id_genero,n_reproducciones,id_disco FROM canciones WHERE id=?";
-    final static String GETARTDISC = "SELECT id,titulo,id_disco FROM canciones";
+
 
     private Connection con = null;
     private Object Album;
@@ -141,7 +140,10 @@ public class MariaDBSong extends Song implements SongDAO {
     }
 
 
-
+    /**
+     * Con esto puedo listar y ya apareceria en el comboBox
+     * @return
+     */
 
         public static List<Song> listarTodos() {
             List<Song> listado = new ArrayList<>();

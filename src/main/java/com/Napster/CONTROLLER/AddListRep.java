@@ -66,7 +66,6 @@ public class AddListRep {
     private void songChange(){
         Song s = songCol.getTableView().getItems().get(listSong.getSelectionModel().getSelectedIndex());
         actualList.getItems().addAll(s);
-        System.out.println(s);
 
     }
 }

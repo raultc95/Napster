@@ -40,7 +40,6 @@ public class AddAlbum {
     private static AddAlbum.window actual_window = AddAlbum.window.ADD;
 
     MariaDBAlbum album = new MariaDBAlbum();
-    //MariaDBArtist a = new MariaDBArtist();
     List<Artist> a = new ArrayList<>();
 
 
@@ -61,7 +60,6 @@ public class AddAlbum {
 
     @FXML
     protected void initialize() {
-        System.out.println(MariaDBArtist.listarTodos());
 
         listArtist.setConverter(Utils.artistConverter());
         listArtist.setItems(FXCollections.observableList(MariaDBArtist.listarTodos()));
@@ -86,9 +84,7 @@ public class AddAlbum {
                 album.setNombre(album.getNombre());
                 idAlbum.setConverter(Utils.albumConverter());
                 idAlbum.getItems().setAll(MariaDBAlbum.listarTodos());
-                /*name.setText(actualArtist.getNombre());
-                nationality.setText(actualArtist.getNacionalidad());
-                url.setText(actualArtist.getFoto());*/
+
             }
         }
 

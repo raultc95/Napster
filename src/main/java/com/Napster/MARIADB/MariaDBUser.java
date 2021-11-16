@@ -14,9 +14,6 @@ import java.util.List;
 
 public class MariaDBUser extends User implements UserDAO {
     final String INSERT = "INSERT INTO usuarios(nombre, correo, foto) VALUES(?,?,?)";
-    final String UPDATE = "UPDATE usuarios SET nombre=?, correo=?, foto=? WHERE id =?";
-    final String DELETE = "DELETE FROM usuarios WHERE id=?";
-    final static String GETALL = "SELECT id,nombre, nacionalidad FROM artistas";
     final static String GETONE = "SELECT id, nombre, correo FROM usuarios WHERE nombre=? AND correo=?";
 
     private Connection con = null;

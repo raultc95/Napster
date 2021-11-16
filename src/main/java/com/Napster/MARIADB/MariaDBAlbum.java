@@ -70,7 +70,6 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
                 q.setString(1, a.getNombre());
                 q.setDate(2, Date.valueOf(a.getFecha_publicacion()));
                 q.setString(3, getFoto());
-                //q.setInt(4,a.getN_reproducciones());
                 q.setInt(4, a.getArtist().getId());
                 q.setInt(5, a.getId());
                 q.executeUpdate();
@@ -98,6 +97,10 @@ public class MariaDBAlbum extends Album implements AlbumDAO {
         }
     }
 
+    /**
+     * Con esto puedo listar y ya apareceria en el comboBox
+     * @return
+     */
     public static List<Album> listarTodos() {
         List<Album> listado = new ArrayList<>();
         Connection conn;

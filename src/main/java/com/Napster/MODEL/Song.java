@@ -96,7 +96,9 @@ public class Song {
                 ", nreproducciones=" + nreproducciones +
                 '}';
     }
-
+    /**
+     * Pasa un objeto a string, para asi recoger los datos del ComboBox
+     */
     public String toCombobox() {
         return this.nombre + "." + this.id;
     }

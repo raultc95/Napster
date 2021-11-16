@@ -12,6 +12,9 @@ import com.Napster.MODEL.Song;
 import javafx.util.StringConverter;
 
 public class Utils {
+    /**
+     * Convierte los diferentes objetos y los conviete en String
+     */
     public static StringConverter<Artist> artistConverter() {
         return new StringConverter<>() {
             @Override

@@ -9,6 +9,9 @@ import javafx.stage.Stage;
 import java.util.Objects;
 
 public class Dialog {
+    /**
+     * Una serie de ventanas de advertencia, confirmacion, etc
+     */
     public static void showError(String title, String header, String description) {
         showDialog(Alert.AlertType.ERROR, title, header, description);
     }

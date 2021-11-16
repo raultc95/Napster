@@ -110,6 +110,9 @@ public class Album {
                 ", n_reproducciones=" + n_reproducciones +
                 '}';
     }
+    /**
+     * Pasa un objeto a string, para asi recoger los datos del ComboBox
+     */
     public String toCombobox(){
         return this.nombre +"."+this.id;
     }

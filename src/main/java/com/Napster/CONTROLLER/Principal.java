@@ -38,7 +38,9 @@ public class Principal {
     @FXML
     private MenuItem addList;
 
-
+    /**
+     * Menu principal, falta el administrar las listas de reproduccion
+     */
 
     @FXML
     private void initialize() {

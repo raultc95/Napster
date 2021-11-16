@@ -43,7 +43,9 @@ public class Genre {
                 ", name='" + name + '\'' +
                 '}';
     }
-
+    /**
+     * Pasa un objeto a string, para asi recoger los datos del ComboBox
+     */
     public String toCombobox() {
         return this.name + "." + this.id;
     }

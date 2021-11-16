@@ -13,7 +13,6 @@ import java.util.List;
 public class MariaDBGenre extends Genre implements GenreDAO {
     final String INSERT = "INSERT INTO generos(titulo) VALUES(?)";
     final String UPDATE = "UPDATE generos SET titulo=? WHERE id =?";
-    final String DELETE = "DELETE FROM generos WHERE id=?";
     final static String GETALL = "SELECT id,titulo FROM generos";
     final String GETONE = "SELECT id, titulo FROM generos WHERE id=?";
 
@@ -73,7 +72,10 @@ public class MariaDBGenre extends Genre implements GenreDAO {
 
     }
 
-
+    /**
+     * Con esto puedo listar y ya apareceria en el comboBox
+     * @return
+     */
     public static List<Genre> listarTodos() {
         List<Genre> listado = new ArrayList<>();
         Connection conn;

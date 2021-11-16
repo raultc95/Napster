@@ -23,6 +23,8 @@ public class LoginController {
     private Button login;
     @FXML
     private Button register;
+    @FXML
+    private Button admin;
 
     MariaDBUser windowUser = new MariaDBUser();
     public static User usuarioActual;

@@ -29,7 +29,7 @@
       <TableView fx:id="listSong" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="songCol" prefWidth="105.0" text="CANCION" />
-          <TableColumn prefWidth="93.0" text="ALBUM" />
+          <TableColumn fx:id="albumCol" prefWidth="93.0" text="ALBUM" />
         </columns>
          <BorderPane.margin>
             <Insets bottom="5.0" />
@@ -37,9 +37,9 @@
       </TableView>
    </left>
    <right>
-      <TableView prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="actualList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
-          <TableColumn prefWidth="123.0" text="CANCION" />
+          <TableColumn fx:id="actualSong" prefWidth="123.0" text="CANCION" />
           <TableColumn prefWidth="76.0" text="ALBUM" />
         </columns>
          <BorderPane.margin>
@@ -48,6 +48,6 @@
       </TableView>
    </right>
    <center>
-      <Button mnemonicParsing="false" text="&gt;&gt;" BorderPane.alignment="CENTER" />
+      <Button fx:id="add" mnemonicParsing="false" onAction="#songChange" text="&gt;&gt;" BorderPane.alignment="CENTER" />
    </center>
 </BorderPane>

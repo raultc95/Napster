@@ -38,8 +38,8 @@
           <TableColumn fx:id="canciones" prefWidth="277.0" text="NOMBRE" />
           <TableColumn fx:id="artista" prefWidth="135.0" text="ARTISTA" />
             <TableColumn fx:id="album" prefWidth="99.0" text="ALBUM" />
-            <TableColumn fx:id="genero" prefWidth="68.0" text="GENERO" />
-            <TableColumn prefWidth="122.0" text="ESCUCHADAS" />
+            <TableColumn fx:id="genero" prefWidth="96.0" text="GENERO" />
+            <TableColumn prefWidth="103.0" text="ESCUCHADAS" />
         </columns>
       </TableView>
    </center>

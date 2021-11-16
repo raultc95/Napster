@@ -36,7 +36,7 @@ public class Administrator {
     @FXML
     private Button updateGenre;
     @FXML
-    private TableView<MariaDBSong> tableSong;
+    private TableView<Song> tableSong;
     @FXML
     private TableColumn<Song, String> listSong;
     @FXML

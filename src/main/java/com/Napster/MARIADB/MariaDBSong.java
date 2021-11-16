@@ -16,7 +16,7 @@ public class MariaDBSong extends Song implements SongDAO {
     final String DELETE = "DELETE FROM canciones WHERE id=?";
     final static String GETALL = "SELECT id,titulo FROM canciones";
     final String GETONE = "SELECT id,titulo,duracion,id_genero,n_reproducciones,id_disco FROM canciones WHERE id=?";
-    final String GETARTDISC = "SELECT nombre FROM artistas WHERE id=?";
+    final static String GETARTDISC = "SELECT id,titulo,id_disco FROM canciones";
 
     private Connection con = null;
     private Object Album;
@@ -41,6 +41,9 @@ public class MariaDBSong extends Song implements SongDAO {
     public MariaDBSong(int id, String nombre) {
         super(id, nombre);
 
+    }
+
+    public MariaDBSong(int id, String nombre, int id_disco) {
     }
 
     @Override
@@ -140,8 +143,8 @@ public class MariaDBSong extends Song implements SongDAO {
 
 
 
-        public static List<MariaDBSong> listarTodos() {
-            List<MariaDBSong> listado = new ArrayList<>();
+        public static List<Song> listarTodos() {
+            List<Song> listado = new ArrayList<>();
             Connection conn = Conection.getConexion();
 
             try {

@@ -60,9 +60,7 @@ public class AddSong {
 
     @FXML
     protected void initialize() {
-        System.out.println(MariaDBSong.listarTodos());
-        System.out.println(MariaDBAlbum.listarTodos());
-        System.out.println(MariaDBGenre.listarTodos());
+
         listaAlbum.setConverter(Utils.albumConverter());
         listGenre.setConverter(Utils.genreConverter());
         listGenre.setItems(FXCollections.observableList(MariaDBGenre.listarTodos()));

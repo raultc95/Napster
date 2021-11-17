@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.Napster.CONTROLLER.AddListRep">
+   <top>
+      <VBox alignment="CENTER" prefHeight="101.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Añadir nombre a su Lista de Reproduccion">
+               <VBox.margin>
+                  <Insets left="5.0" top="5.0" />
+               </VBox.margin></Label>
+            <TextField>
+               <VBox.margin>
+                  <Insets left="5.0" right="5.0" />
+               </VBox.margin>
+            </TextField>
+            <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" text="AÑADIR">
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </Button>
+         </children>
+      </VBox>
+   </top>
+   <left>
+      <TableView fx:id="listSong" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="songCol" prefWidth="105.0" text="CANCION" />
+          <TableColumn fx:id="albumCol" prefWidth="93.0" text="ALBUM" />
+        </columns>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </left>
+   <right>
+      <TableView fx:id="actualList" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="actualSong" prefWidth="123.0" text="CANCION" />
+          <TableColumn prefWidth="76.0" text="ALBUM" />
+        </columns>
+         <BorderPane.margin>
+            <Insets bottom="5.0" />
+         </BorderPane.margin>
+      </TableView>
+   </right>
+   <center>
+      <Button fx:id="add" mnemonicParsing="false" onAction="#songChange" text="&gt;&gt;" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
